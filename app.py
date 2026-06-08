@@ -35,11 +35,11 @@ class RepeatChannels(Layer):
 # ======== Cargar modelos ========
 @st.cache_resource
 def cargar_segmentador():
-    return load_model('modelo3_b2.h5', custom_objects={'RepeatChannels': RepeatChannels, 'loss': Weighted_Cross_Entropy(10.0)})
+    return load_model('modelo3_b2.h5', custom_objects={'RepeatChannels': RepeatChannels, 'loss': Weighted_Cross_Entropy(10.0)}, safe_mode=False)
 
 @st.cache_resource
 def cargar_clasificador():
-    return load_model('clasificador_superficie_SA.h5')
+    return load_model('clasificador_superficie_SA.h5', safe_mode=False)
 
 model_segmentador = cargar_segmentador()
 model_clasificador = cargar_clasificador()
